@@ -1,8 +1,27 @@
-var express = require("express");
-var app = express();
+let express = require("express");
+let path = require('path');
+let app = express();
 
+// app.use('/', express.static(__dirname, '/public'));
 
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, '/public'));
+});
 
+app.post('/', function(req, res) {
+  console.log(submit());
+});
+function submit() {
+  let date = document.getElementById(data);
+  // event.preventDefault();
+  // //let name = document.getElementsById("name");
+  // //let comment = document.getElementsByName("comment");
+  // console.log("name");
+  //console.log(comment);
+  return date;
+}
+
+app.listen(3000);
 
 
 
