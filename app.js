@@ -1,25 +1,33 @@
 let express = require("express");
 let path = require('path');
 let app = express();
+let bodyParser = require('body-parser');
 
 // app.use('/', express.static(__dirname, '/public'));
 
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '/public'));
+  res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); 
+
 app.post('/', function(req, res) {
-  console.log(submit());
+  console.log(req.body);
+  res.send("recieved your request!");
+  // console.log(submit());
 });
-function submit() {
-  let date = document.getElementById(data);
-  // event.preventDefault();
-  // //let name = document.getElementsById("name");
-  // //let comment = document.getElementsByName("comment");
-  // console.log("name");
-  //console.log(comment);
-  return date;
-}
+
+
+// function submit() {
+//   let date = document.getElementById('name');
+//   // event.preventDefault();
+//   // //let name = document.getElementsById("name");
+//   // //let comment = document.getElementsByName("comment");
+//   // console.log("name");
+//   //console.log(comment);
+//   return date;
+// }
 
 app.listen(3000);
 
