@@ -15,19 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post('/', function(req, res) {
   console.log(req.body);
   res.send("recieved your request!");
-  // console.log(submit());
 });
-
-
-// function submit() {
-//   let date = document.getElementById('name');
-//   // event.preventDefault();
-//   // //let name = document.getElementsById("name");
-//   // //let comment = document.getElementsByName("comment");
-//   // console.log("name");
-//   //console.log(comment);
-//   return date;
-// }
 
 app.listen(3000);
 
