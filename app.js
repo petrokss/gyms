@@ -4,12 +4,7 @@ let app = express();
 let bodyParser = require('body-parser');
 const Database = require('better-sqlite3');
 const db = new Database('dataBase.db', { verbose: console.log });
-
-// //onst row = db.prepare('SELECT * FROM users WHERE id=?').get(userId);
-// const row = db.prepare('SELECT * FROM users WHERE id=?');
-// console.log(row.firstName, row.lastName);
-
-
+const stmt = db.prepare('INSERT INTO users (login, password) VALUES (?, ?)');
 
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '/public/index.html'));
@@ -19,7 +14,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
 
 app.post('/', function(req, res) {
-  console.log(req.body.name);
+  console.log(req.body);
+  stmt.run(req.body.name, req.body.password)
   res.send("recieved your request!");
 });
 
