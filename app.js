@@ -2,8 +2,14 @@ let express = require("express");
 let path = require('path');
 let app = express();
 let bodyParser = require('body-parser');
+const Database = require('better-sqlite3');
+const db = new Database('dataBase.db', { verbose: console.log });
 
-// app.use('/', express.static(__dirname, '/public'));
+// //onst row = db.prepare('SELECT * FROM users WHERE id=?').get(userId);
+// const row = db.prepare('SELECT * FROM users WHERE id=?');
+// console.log(row.firstName, row.lastName);
+
+
 
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '/public/index.html'));
@@ -13,7 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
 
 app.post('/', function(req, res) {
-  console.log(req.body);
+  console.log(req.body.name);
   res.send("recieved your request!");
 });
 
