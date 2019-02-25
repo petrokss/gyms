@@ -1,10 +1,13 @@
-// var express = require('express');
-// var app = express();
-// var path = require('path');
+var express = require('express');
+var exphbs  = require('express-handlebars');
 
-// // viewed at http://localhost:8080
-// app.get('/', function(req, res) {
-//     res.sendFile(path.join(__dirname + '/index.html'));
-// });
+var app = express();
 
-// app.listen(8080);
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+app.get('/', function (req, res) {
+    res.render('home');
+});
+
+app.listen(3000);
