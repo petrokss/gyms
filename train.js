@@ -1,28 +1,30 @@
-// var express = require('express');
-// var exphbs  = require('express-handlebars');
+let express = require("express");
+let path = require('path');
+let app = express();
+let exphbs  = require('express-handlebars');
+let bodyParser = require('body-parser');
+const Database = require('better-sqlite3');
+const db = new Database('dataBase.db', { verbose: console.log });
+const stmt = db.prepare('INSERT INTO users (login, password) VALUES (?, ?)');
 
-// var app = express();
+let hbs = exphbs.create();
 
-// var hbs = exphbs.create({
-//     // Specify helpers which are only registered on this instance.
-//     helpers: {
-//         foo: function () { return 'FOO!'; },
-//         bar: function () { return 'BAR!'; }
-//     }
-// });
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
-// app.engine('handlebars', hbs.engine);
-// app.set('view engine', 'handlebars');
+app.get('/', function(req, res) {
+  //res.sendFile(path.join(__dirname, '/public/index.html'));
+  res.render('home');
+});
 
-// app.get('/', function (req, res, next) {
-//     res.render('home', {
-//         showTitle: true,
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); 
 
-//         // Override `foo` helper only for this rendering.
-//         helpers: {
-//             foo: function () { return 'foo.'; }
-//         }
-//     });
-// });
+app.post('/', function(req, res) {
+  console.log(req.body);
+  stmt.run(req.body.name, req.body.password)
+  res.send("recieved your request!");
 
-// app.listen(3000);
+});
+
+app.listen(3000);
