@@ -4,9 +4,9 @@ let app = express();
 let exphbs  = require('express-handlebars');
 let bodyParser = require('body-parser');
 const Database = require('better-sqlite3');
-const db = new Database('dataBase.db', { verbose: console.log });
-const stmt = db.prepare('INSERT INTO users (login, password) VALUES (?, ?)');
-const row = db.prepare('SELECT * FROM users');
+const db = new Database('gyms.db', { verbose: console.log });
+//const stmt = db.prepare('INSERT INTO users (login, password) VALUES (?, ?)');
+const row = db.prepare('SELECT * FROM gyms');
 
 let hbs = exphbs.create();
 
@@ -21,8 +21,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
 
 app.post('/', function(req, res) {
-  console.log(req.body);
-  stmt.run(req.body.name, req.body.password)
+  //console.log(req.body);
+  //stmt.run(req.body.name, req.body.password)
   res.send("recieved your request!");
 });
 
