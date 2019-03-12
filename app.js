@@ -14,6 +14,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.get('/', function(req, res) {
+  app.use(express.static('public'));
   res.render('home', {data: row.all()});
 });
 
