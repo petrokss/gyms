@@ -6,7 +6,7 @@ let bodyParser = require('body-parser');
 const Database = require('better-sqlite3');
 const db = new Database('dataBase.db', { verbose: console.log });
 const stmt = db.prepare('INSERT INTO users (login, password) VALUES (?, ?)');
-const row = db.prepare('SELECT * FROM users WHERE id=?');
+const row = db.prepare('SELECT * FROM users');
 
 let hbs = exphbs.create();
 
@@ -14,7 +14,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.get('/', function(req, res) {
-  res.render('home', {data: row});
+  res.render('home', {data: row.all()});
 });
 
 app.use(bodyParser.json());
