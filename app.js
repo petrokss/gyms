@@ -18,6 +18,14 @@ app.get('/', function(req, res) {
   res.render('home', {data: row.all()});
 });
 
+app.get('/user/gyms/:id', function(req, res) {
+  // app.use(express.static('public'));
+  // res.render('home', {data: row.all()});
+  // res.send("you're at the page" + req.param.name);
+  // res.send('user ' + req.params.id);
+  res.send('Hello!');
+});
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
 
