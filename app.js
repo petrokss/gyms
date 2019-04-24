@@ -21,8 +21,9 @@ app.get('/', function(req, res) {
 
 app.get('/gyms/:id', function(req, res) {
   app.use(express.static('public'));
-  var data = rowId.run(req.param.id);
-  res.render('gyms', {data: data.all()});
+  var data = rowId.get(req.params.id);
+  res.render('gyms', {data: data});
+  //console.log('ID:', data);
 });
 
 app.use(bodyParser.json());
