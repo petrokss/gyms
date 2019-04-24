@@ -7,6 +7,7 @@ const Database = require('better-sqlite3');
 const db = new Database('gyms.db', { verbose: console.log });
 //const stmt = db.prepare('INSERT INTO users (login, password) VALUES (?, ?)');
 const row = db.prepare('SELECT * FROM gyms');
+const rowId = db.prepare('SELECT * FROM gyms WHERE id = ?');
 
 let hbs = exphbs.create();
 
@@ -20,7 +21,8 @@ app.get('/', function(req, res) {
 
 app.get('/gyms/:id', function(req, res) {
   app.use(express.static('public'));
-  res.render('gyms', {data: row.all()});
+  var data = rowId.run(req.param.id);
+  res.render('gyms', {data: data.all()});
 });
 
 app.use(bodyParser.json());
