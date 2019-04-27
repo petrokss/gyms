@@ -8,7 +8,6 @@ const db = new Database('gyms.db', { verbose: console.log });
 const stmt = db.prepare('INSERT INTO gyms (name, adress, photo) VALUES (?, ?, ?)');
 const row = db.prepare('SELECT * FROM gyms');
 const rowId = db.prepare('SELECT * FROM gyms WHERE id = ?');
-// const createGym = db.prepare('INSERT INTO gyms (name, adress, photo) VALUES (?, ?, ?)');
 
 let hbs = exphbs.create();
 
@@ -28,7 +27,6 @@ app.get('/gyms/:id', function(req, res) {
   app.use(express.static('public'));
   var data = rowId.get(req.params.id);
   res.render('gyms', {data: data});
-  //console.log('ID:', data);
 });
 
 app.use(bodyParser.json());
@@ -43,7 +41,7 @@ app.post('/', function(req, res) {
 app.post('/gyms/create', function(req, res) {
   console.log(req.body);
   stmt.run(req.body.name, req.body.adress, req.body.photo);
-  res.send("recieved your request!");
+  res.sendFile(path.join(__dirname, '/public/returnToMain.html'));
 });
 
 app.listen(3000);
