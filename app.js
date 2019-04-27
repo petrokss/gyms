@@ -41,7 +41,11 @@ app.post('/', function(req, res) {
 app.post('/gyms/create', function(req, res) {
   console.log(req.body);
   stmt.run(req.body.name, req.body.adress, req.body.photo);
-  res.sendFile(path.join(__dirname, '/public/returnToMain.html'));
+  //res.sendFile(path.join(__dirname, '/public/returnToMain.html'));
+  //res.send("Thank you for your request!");
+  //document.location.href="/";
+  //object.onclick = function(){document.location.href="/";};
+  res.redirect("/");
 });
 
 app.listen(3000);
