@@ -5,11 +5,12 @@
   <meta charset="utf-8" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/styles/gyms.css">
   <title>Gyms:</title>
 </head>
 
 <body>
-  <divclass="card-group">
+  <div class="card-group">
     {{#each data}}
     <div class="card" style="width: 18rem;">
       <img src="{{this.photo}}" alt="{{this.name}}">
@@ -17,12 +18,11 @@
         <h5 class="card-title">{{this.name}}</h5>
         <p class="card-text">{{this.adress}}</p>
         <a href="/gyms/{{this.id}}" class="btn btn-primary">Details</a>
-        {{!-- <a href="#" class="btn btn-primary">ZAPISATSYA V KOCHALKU</a> --}}
       </div>
     </div>
     {{/each}}
-    </div>
-    <a href="/gyms/create" class="btn btn-primary">Create Gym</a>
+  </div>
+  <a href="/gyms/create" class="btn btn-primary">Create Gym</a>
 </body>
 
 </html>
