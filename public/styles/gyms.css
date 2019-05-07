@@ -1,4 +1,19 @@
+img.img-content {
+    width: 18rem;
+    height: 18rem; 
+}
 img {
     width: 100%;
-    height: auto;  
+    height: 200px;
+    object-fit: contain;
+}
+.card {
+    width: 18rem;
+    margin: 5px;
+} 
+.card-text {
+    font-size: small;
+}
+.btn-primary {
+    margin: 1rem;
 }
