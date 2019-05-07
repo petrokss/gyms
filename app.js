@@ -43,4 +43,11 @@ app.post('/gyms/:id', function(req, res) {
   deleteId.run(req.params.id);
   res.redirect("/");
 });
+
+app.get("/api/gyms", function(req, res) {
+  let data = row.all();
+  res.json(data);
+  console.log(data);
+});
+
 app.listen(3000);
