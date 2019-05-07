@@ -3,15 +3,15 @@
 
 <head>
     <meta charset="utf-8" />
-    {{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> --}}
+    <link rel="stylesheet" type="text/css" href="/styles/gyms.css">
     <title>{{data.name}}</title>
-    <h1>{{data.name}}</h1>
+    <h1 class="gyms-h1">{{data.name}}</h1>
 </head>
 
 <body>
     <img src="{{data.photo}}" alt="{{data.name}}">
-    <p>{{data.adress}}</p>
+    <p class="gyms-p">{{data.adress}}</p>
+    <input type="submit" value="Delete account" />
 </body>
 
 </html>

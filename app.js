@@ -8,6 +8,7 @@ const db = new Database('gyms.db', { verbose: console.log });
 const stmt = db.prepare('INSERT INTO gyms (name, adress, photo) VALUES (?, ?, ?)');
 const row = db.prepare('SELECT * FROM gyms');
 const rowId = db.prepare('SELECT * FROM gyms WHERE id = ?');
+const deleteId = db.prepare('DELETE FROM gyms WHERE id = ?')
 
 let hbs = exphbs.create();
 
@@ -37,5 +38,9 @@ app.post('/gyms/create', function(req, res) {
   stmt.run(req.body.name, req.body.adress, req.body.photo);
   res.redirect("/");
 });
-
+app.post('/gyms/:id', function(req, res) {
+  console.log(req.body);
+  deleteId.run(req.params.id);
+  res.redirect("/");
+});
 app.listen(3000);
