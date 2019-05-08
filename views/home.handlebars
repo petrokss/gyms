@@ -17,7 +17,7 @@
       <div class="card-body">
         <h5 class="card-title">{{this.name}}</h5>
         <p class="card-text">{{this.adress}}</p>
-        <div class="col-md-4 text-center"> 
+        <div class="col-md-4 text-center">
           <a href="/gyms/{{this.id}}" class="btn btn-primary">Details</a>
         </div>
       </div>
@@ -25,6 +25,18 @@
     {{/each}}
   </div>
   <a href="/gyms/create" class="btn btn-primary">Create Gym</a>
+  <p id="demo"></p>
+  <button type="button" onclick="MyFunction()">Show json in console</button>
+  <script>
+    function MyFunction() {
+      const Http = new XMLHttpRequest();
+      const url = '/api/gyms';
+      Http.open("GET", url);
+      Http.send();
+      console.log(Http.responseText);
+    }
+  </script>
 </body>
 
 </html>
+
