@@ -29,14 +29,13 @@
   <button type="button" onclick="MyFunction()">Show json in console</button>
   <script>
     function MyFunction() {
-      const Http = new XMLHttpRequest();
-      const url = '/api/gyms';
-      Http.open("GET", url);
-      Http.send();
-      console.log(Http.responseText);
+      fetch('/api/gyms')
+        .then(
+          function (response) {
+            console.log("Hello world!");
+          })
     }
   </script>
 </body>
 
 </html>
-
