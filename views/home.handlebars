@@ -29,11 +29,15 @@
   <button type="button" onclick="MyFunction()">Show json in console</button>
   <script>
     function MyFunction() {
-      fetch('/api/gyms')
-        .then(
-          function (response) {
-            console.log("Hello world!");
-          })
+
+      const p = fetch('/api/gyms');
+      p.then(function (response) {
+          return response.json();
+      }).then(function(resolve) {
+          console.log(resolve);
+      }).catch(function (err) {
+          console.log(err);
+      })
     }
   </script>
 </body>
