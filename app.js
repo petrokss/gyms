@@ -17,7 +17,8 @@ app.set('view engine', 'handlebars');
 
 app.get('/', function(req, res) {
   app.use(express.static('public'));
-  res.render('home', {data: row.all()});
+  res.render('home');
+  //res.render('home', {data: row.all()});
 });
 
 app.get('/gyms/create', function(req, res) {

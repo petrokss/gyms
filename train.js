@@ -28,12 +28,3 @@ app.post('/', function(req, res) {
 });
 
 app.listen(3000);
-
-
-// function MyFunction() {
-//   const Http = new XMLHttpRequest();
-//   const url = '/api/gyms';
-//   Http.open("GET", url);
-//   Http.send();
-//   console.log(Http.responseText);
-// }
