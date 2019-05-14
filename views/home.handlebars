@@ -39,21 +39,3 @@
 </body>
 
 </html>
-
-<body>
-  <div class="card-group">
-    {{#each data}}
-    <div class="card">
-      <div class="img-content"> <img src="{{this.photo}}" alt="{{this.name}}"></div>
-      <div class="card-body">
-        <h5 class="card-title">{{this.name}}</h5>
-        <p class="card-text">{{this.adress}}</p>
-        <div class="col-md-4 text-center">
-          <a href="/gyms/{{this.id}}" class="btn btn-primary">Details</a>
-        </div>
-      </div>
-    </div>
-    {{/each}}
-  </div>
-  <a href="/gyms/create" class="btn btn-primary">Create Gym</a>
-</body>
