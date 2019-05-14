@@ -13,39 +13,47 @@
   <div class="card-group">
     <div id="gyms"></div>
     <script>
-      let str = "";
+      let str = "<div class=\"card\">" + "<div class=\"img-content\">";
       fetch('/api/gyms').then(function (res) {
         const p = res.json();
         return p;
       }).then(function (resolve) {
         console.log(resolve);
         resolve.forEach((elem) => {
-          str += "name: " + elem.name + ", adress: " + elem.adress + ", photo link:" + elem.photo + '\n';
+          str += "<img src=\"" + elem.photo + "\"></div>" +
+          "<div class=\"card-body\">" + "<h5 class=\"card-title\">" + 
+          elem.name + "</h5>" + "<p class=\"card-text\">" + elem.adress + "</p>" +
+          "<div class=\"col-md-4 text-center\">" +
+          "<a href=\"/gyms/" + elem.id + "\" class=\"btn btn-primary\">Details</a></div></div></div>";
           document.getElementById("gyms").innerHTML = str;
           console.log(str);
         });
       }).catch(function (err) {
         console.log(err);
       });
-      console.log("str: " + str);
     </script>
   </div>
   <a href="/gyms/create" class="btn btn-primary">Create Gym</a>
   <p id="demo"></p>
   <button type="button" onclick="MyFunction()">Show json in console</button>
-  <script>
-    function MyFunction() {
-
-      const p = fetch('/api/gyms');
-      p.then(function (response) {
-        return response.json();
-      }).then(function (resolve) {
-        console.log(resolve);
-      }).catch(function (err) {
-        console.log(err);
-      })
-    }
-  </script>
 </body>
 
 </html>
+
+<body>
+  <div class="card-group">
+    {{#each data}}
+    <div class="card">
+      <div class="img-content"> <img src="{{this.photo}}" alt="{{this.name}}"></div>
+      <div class="card-body">
+        <h5 class="card-title">{{this.name}}</h5>
+        <p class="card-text">{{this.adress}}</p>
+        <div class="col-md-4 text-center">
+          <a href="/gyms/{{this.id}}" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  <a href="/gyms/create" class="btn btn-primary">Create Gym</a>
+</body>
