@@ -10,32 +10,27 @@
 </head>
 
 <body>
-  <div class="card-group">
-    <div id="gyms"></div>
-    <script>
-      let str = "<div class=\"card\">" + "<div class=\"img-content\">";
-      fetch('/api/gyms').then(function (res) {
-        const p = res.json();
-        return p;
-      }).then(function (resolve) {
-        console.log(resolve);
-        resolve.forEach((elem) => {
-          str += "<img src=\"" + elem.photo + "\"></div>" +
-          "<div class=\"card-body\">" + "<h5 class=\"card-title\">" + 
-          elem.name + "</h5>" + "<p class=\"card-text\">" + elem.adress + "</p>" +
-          "<div class=\"col-md-4 text-center\">" +
-          "<a href=\"/gyms/" + elem.id + "\" class=\"btn btn-primary\">Details</a></div></div></div>";
-          document.getElementById("gyms").innerHTML = str;
-          console.log(str);
-        });
-      }).catch(function (err) {
-        console.log(err);
+  <div id="gyms" class="card-group"></div>
+  <script>
+    let str = "";
+    fetch('/api/gyms').then(function (res) {
+      const p = res.json();
+      return p;
+    }).then(function (resolve) {
+      console.log(resolve);
+      resolve.forEach((elem) => {
+        str += '<div class="card"><div class="img-content"><img src="' + elem.photo + '"alt=" ' + this.name + '"></div>' +
+          '<div class="card-body"><h5 class="card-title">' + elem.name + '</h5><p class="card-text">' + elem.adress + '</p>' +
+          '<div class="col-md-4 text-center"><a href="/gyms/' + elem.id + '" class="btn btn-primary">Details</a></div></div></div>'
+        document.getElementById("gyms").innerHTML = str;
+        console.log(str);
       });
-    </script>
-  </div>
+    }).catch(function (err) {
+      console.log(err);
+    });
+
+  </script>
   <a href="/gyms/create" class="btn btn-primary">Create Gym</a>
-  <p id="demo"></p>
-  <button type="button" onclick="MyFunction()">Show json in console</button>
 </body>
 
 </html>

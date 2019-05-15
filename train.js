@@ -97,3 +97,32 @@ function MyFunction() {
   })
 }
 </script> */}
+
+
+// <script>
+// let str = "<div class=\"card\">" + "<div class=\"img-content\">";
+// fetch('/api/gyms').then(function (res) {
+//   const p = res.json();
+//   return p;
+// }).then(function (resolve) {
+//   console.log(resolve);
+//   resolve.forEach((elem) => {
+//     str += "<img src=\"" + elem.photo + "\"></div>" +
+//     "<div class=\"card-body\">" + "<h5 class=\"card-title\">" + 
+//     elem.name + "</h5>" + "<p class=\"card-text\">" + elem.adress + "</p>" +
+//     "<div class=\"col-md-4 text-center\">" +
+//     "<a href=\"/gyms/" + elem.id + "\" class=\"btn btn-primary\">Details</a></div></div></div>";
+//     document.getElementById("gyms").innerHTML = str;
+//     console.log(str);
+//   });
+// }).catch(function (err) {
+//   console.log(err);
+// });
+// </script>
+
+
+// str += "<img src=\"" + elem.photo + "\"></div>" +
+//           "<div class=\"card-body\">" + "<h5 class=\"card-title\">" +
+//           elem.name + "</h5>" + "<p class=\"card-text\">" + elem.adress + "</p>" +
+//           "<div class=\"col-md-4 text-center\">" +
+//           "<a href=\"/gyms/" + elem.id + "\" class=\"btn btn-primary\">Details</a></div></div></div>";
