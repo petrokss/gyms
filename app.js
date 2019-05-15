@@ -34,7 +34,7 @@ app.get('/gyms/:id', function(req, res) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
 
-app.post('/gyms/create', function(req, res) {
+app.post('/', function(req, res) {
   console.log(req.body);
   stmt.run(req.body.name, req.body.adress, req.body.photo);
   res.redirect("/");

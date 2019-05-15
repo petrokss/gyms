@@ -126,3 +126,4 @@ function MyFunction() {
 //           elem.name + "</h5>" + "<p class=\"card-text\">" + elem.adress + "</p>" +
 //           "<div class=\"col-md-4 text-center\">" +
 //           "<a href=\"/gyms/" + elem.id + "\" class=\"btn btn-primary\">Details</a></div></div></div>";
+{/* <button type="button" onclick="asd(0)" id="update" value="Hide Form">Hide Form</button> */}
