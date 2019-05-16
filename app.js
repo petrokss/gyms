@@ -51,4 +51,8 @@ app.get("/api/gyms", function(req, res) {
   console.log(data);
 });
 
+app.post("/api/gyms", function(req, res) {
+  stmt.run(req.body.name, req.body.adress, req.body.photo);
+});
+
 app.listen(3000);

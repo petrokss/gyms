@@ -16,8 +16,9 @@
     fetch('/api/gyms').then(function (res) {
       const p = res.json();
       return p;
-    }).then(function (resolvedValue) {
-      resolvedValue.forEach((elem) => {
+    }).then(function (resolve) {
+      console.log(resolve);
+      resolve.forEach((elem) => {
         str += '<div class="card"><div class="img-content"><img src="' + elem.photo + '"alt=" ' + this.name + '"></div>' +
           '<div class="card-body"><h5 class="card-title">' + elem.name + '</h5><p class="card-text">' + elem.adress + '</p>' +
           '<div class="col-md-4 text-center"><a href="/gyms/' + elem.id + '" class="btn btn-primary">Details</a></div></div></div>'
@@ -29,10 +30,11 @@
     });
 
   </script>
-  <button class="btn btn-primary" type="button" onclick="createGym(1)" id="insert" value="Add new Product">CREATE GYM</button>
+ 
+  <button class="btn btn-primary" type="button" onclick="asd(1)" id="insert" value="Add new Product">CREATE GYM</button>
 
 
-  <form id="createGym" method="post" action="">
+  <form id="asd" method="post" action="/api/gyms">
     <p>
       <b>Name:</b><br />
       <input id="name" name="name" type="text" size="40" />
@@ -46,20 +48,21 @@
       <input id="photo" name="photo" type="text" size="40" />
     </p>
     <p>
-      <input type="submit" value="submit" onclick="createGym(0)" />
-      <input type="reset" value="cancel" onclick="createGym(0)"/>
+      <input type="submit" value="submit" onclick="asd(0)" />
+      <input type="reset" value="cancel" onclick="asd(0)"/>
     </p>
   </form>
 
   <script type="text/javascript">
     window.onload = function () {
-      document.getElementById("createGym").style.display = "none";
+      document.getElementById("asd").style.display = "none";
     };
+
     function asd(a) {
       if (a == 1) {
-        document.getElementById("createGym").style.display = "block";
+        document.getElementById("asd").style.display = "block";
       } else {
-        document.getElementById("createGym").style.display = "none";
+        document.getElementById("asd").style.display = "none";
       }
     }
   </script>
