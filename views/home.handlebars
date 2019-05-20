@@ -30,11 +30,18 @@
     });
 
   </script>
- 
+
   <button class="btn btn-primary" type="button" onclick="asd(1)" id="insert" value="Add new Product">CREATE GYM</button>
 
-
-  <form id="asd" method="post" action="/api/gyms">
+  <script>
+    function myFunction() {
+      let name = document.getElementById("name").value;
+      let adress = document.getElementById("adress").value;
+      let photo = document.getElementById("photo").value;
+      console.log("name:" + name + ", adress: " + adress + ", photo link: " + photo);
+    }
+  </script>
+  <form id="asd" method="" action="" onsubmit="myFunction(); return false;">
     <p>
       <b>Name:</b><br />
       <input id="name" name="name" type="text" size="40" />
@@ -49,7 +56,7 @@
     </p>
     <p>
       <input type="submit" value="submit" onclick="asd(0)" />
-      <input type="reset" value="cancel" onclick="asd(0)"/>
+      <input type="reset" value="cancel" onclick="asd(0)" />
     </p>
   </form>
 
