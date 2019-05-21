@@ -23,7 +23,6 @@
           '<div class="card-body"><h5 class="card-title">' + elem.name + '</h5><p class="card-text">' + elem.adress + '</p>' +
           '<div class="col-md-4 text-center"><a href="/gyms/' + elem.id + '" class="btn btn-primary">Details</a></div></div></div>'
         document.getElementById("gyms").innerHTML = str;
-        console.log(str);
       });
     }).catch(function (err) {
       console.log(err);
@@ -37,6 +36,14 @@
     function consoleLogInputData(event) {
       event.preventDefault();
       try {
+        const p = fetch('/api/gyms');
+        p.then(function (response) {
+          return response.json();
+        }).then(function (resolve) {
+          console.log(resolve);
+        }).catch(function (err) {
+          console.log(err);
+        })
         let name = document.getElementById("name").value;
         let adress = document.getElementById("adress").value;
         let photo = document.getElementById("photo").value;
