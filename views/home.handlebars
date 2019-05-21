@@ -34,14 +34,20 @@
   <button class="btn btn-primary" type="button" onclick="asd(1)" id="insert" value="Add new Product">CREATE GYM</button>
 
   <script>
-    function myFunction() {
-      let name = document.getElementById("name").value;
-      let adress = document.getElementById("adress").value;
-      let photo = document.getElementById("photo").value;
-      console.log("name:" + name + ", adress: " + adress + ", photo link: " + photo);
+    function consoleLogInputData(event) {
+      event.preventDefault();
+      try {
+        let name = document.getElementById("name").value;
+        let adress = document.getElementById("adress").value;
+        let photo = document.getElementById("photo").value;
+        console.log("name:" + name + ", adress: " + adress + ", photo link: " + photo);
+      } catch (event) {
+        throw new Error(event.message);
+      }
+      return false;
     }
   </script>
-  <form id="asd" method="" action="" onsubmit="myFunction(); return false;">
+  <form id="asd" method="" action="" onsubmit="consoleLogInputData(event)">
     <p>
       <b>Name:</b><br />
       <input id="name" name="name" type="text" size="40" />
