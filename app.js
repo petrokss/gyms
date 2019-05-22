@@ -35,7 +35,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
 
 app.post('/', function(req, res) {
-  console.log(req.body);
   stmt.run(req.body.name, req.body.adress, req.body.photo);
   res.redirect("/");
 });
@@ -52,7 +51,8 @@ app.get("/api/gyms", function(req, res) {
 });
 
 app.post("/api/gyms", function(req, res) {
-  console.log(req.body.name, req.body.adress, req.body.photo);
+  console.log(req.body);
+  stmt.run(req.body.name, req.body.adress, req.body.photo);
 });
 
 app.listen(3000);

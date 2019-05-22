@@ -30,31 +30,36 @@
 
   </script>
 
-  <button class="btn btn-primary" type="button" onclick="asd(1)" id="insert" value="Add new Product">CREATE GYM</button>
-
+  <button class="btn btn-primary" type="button" onclick="displayForm(1)" id="insert" value="Add new Product">CREATE
+    GYM</button>
   <script>
-    function consoleLogInputData(event) {
+    function postForm(event) {
       event.preventDefault();
       try {
-        const p = fetch('/api/gyms');
-        p.then(function (response) {
-          return response.json();
-        }).then(function (resolve) {
-          console.log(resolve);
-        }).catch(function (err) {
-          console.log(err);
-        })
         let name = document.getElementById("name").value;
         let adress = document.getElementById("adress").value;
         let photo = document.getElementById("photo").value;
-        console.log("name:" + name + ", adress: " + adress + ", photo link: " + photo);
+        let data = {
+          name: name,
+          adress: adress,
+          photo: photo
+        };
+        return fetch('/api/gyms', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json, text/plain, ',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        }).then(response => response.json)
+          .then((data) => console.log(data))
       } catch (event) {
         throw new Error(event.message);
       }
       return false;
     }
   </script>
-  <form id="asd" method="" action="" onsubmit="consoleLogInputData(event)">
+  <form id="formCreateGym" method="" action="" onsubmit="postForm(event)">
     <p>
       <b>Name:</b><br />
       <input id="name" name="name" type="text" size="40" />
@@ -68,21 +73,21 @@
       <input id="photo" name="photo" type="text" size="40" />
     </p>
     <p>
-      <input type="submit" value="submit" onclick="asd(0)" />
-      <input type="reset" value="cancel" onclick="asd(0)" />
+      <input type="submit" value="submit" onclick="displayForm(0)" />
+      <input type="reset" value="cancel" onclick="displayForm(0)" />
     </p>
   </form>
 
   <script type="text/javascript">
     window.onload = function () {
-      document.getElementById("asd").style.display = "none";
+      document.getElementById("formCreateGym").style.display = "none";
     };
 
-    function asd(a) {
+    function displayForm(a) {
       if (a == 1) {
-        document.getElementById("asd").style.display = "block";
+        document.getElementById("formCreateGym").style.display = "block";
       } else {
-        document.getElementById("asd").style.display = "none";
+        document.getElementById("formCreateGym").style.display = "none";
       }
     }
   </script>
