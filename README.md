@@ -9,7 +9,7 @@ The technologies I've used in the project:
     * JS
     * Handlebars
     * Bootstrap
-    * React (currnetly sudying)
+    * React (currently studying)
 2. Backend
     * Node.js
     * Express
