@@ -14,5 +14,3 @@ The techologies I've used in the project:
     * Node.js
     * Express
     * SQLite
-
-I plan to add more styles, search and React for more effective performance.
